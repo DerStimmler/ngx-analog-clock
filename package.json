@@ -1,9 +1,28 @@
 {
   "name": "@ngx-analog-clock/source",
-  "version": "0.0.0",
+  "description": "Customizable analog clock for your Angular app",
+  "keywords": [
+    "npm",
+    "library",
+    "angular",
+    "typescript",
+    "analog",
+    "clock",
+    "time",
+    "ngx"
+  ],
+  "author": "Stimmler",
   "license": "MIT",
-  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DerStimmler/ngx-analog-clock"
+  },
+  "bugs": {
+    "url": "https://github.com/DerStimmler/ngx-analog-clock/issues"
+  },
+  "homepage": "https://derstimmler.github.io/ngx-analog-clock/",
   "private": true,
+  "scripts": {},
   "dependencies": {
     "@angular/common": "~20.1.0",
     "@angular/compiler": "~20.1.0",
