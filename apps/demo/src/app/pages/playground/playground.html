@@ -1,0 +1,509 @@
+<h2 class="font-bold text-2xl mb-4">Playground</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <!-- Clock Container -->
+  <div class="w-full aspect-square border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+    <div class="w-full h-full max-w-[500px] max-h-[500px]">
+      <ngx-analog-clock
+        [date]="date()"
+        [showHourHand]="showHourHand()"
+        [showMinuteHand]="showMinuteHand()"
+        [showSecondHand]="showSecondHand()"
+        [showHourMarkers]="showHourMarkers()"
+        [showMinuteMarkers]="showMinuteMarkers()"
+        [showClockNumbers]="showClockNumbers()"
+        [showBezel]="showBezel()"
+        [transitionDuration]="transitionDuration()"
+        [transitionFunction]="transitionFunction()"
+        [bezelThickness]="bezelThickness()"
+        [pivotThickness]="pivotThickness()"
+        [hourHandThickness]="hourHandThickness()"
+        [hourHandLength]="hourHandLength()"
+        [minuteHandThickness]="minuteHandThickness()"
+        [minuteHandLength]="minuteHandLength()"
+        [secondHandThickness]="secondHandThickness()"
+        [secondHandLength]="secondHandLength()"
+        [pivotColor]="pivotColor()"
+        [hourHandColor]="hourHandColor()"
+        [minuteHandColor]="minuteHandColor()"
+        [secondHandColor]="secondHandColor()"
+        [hourMarkerColor]="hourMarkerColor()"
+        [minuteMarkerColor]="minuteMarkerColor()"
+        [clockNumberColor]="clockNumberColor()"
+        [dialColor]="dialColor()"
+        [bezelColor]="bezelColor()"
+        [markerOffsetPercent]="markerOffsetPercent()"
+        [numbersOffsetPercent]="numbersOffsetPercent()"
+        [hourMarkerThickness]="hourMarkerThickness()"
+        [hourMarkerLength]="hourMarkerLength()"
+        [minuteMarkerThickness]="minuteMarkerThickness()"
+        [minuteMarkerLength]="minuteMarkerLength()"
+        [hourHandBorderRadius]="hourHandBorderRadius()"
+        [minuteHandBorderRadius]="minuteHandBorderRadius()"
+        [secondHandBorderRadius]="secondHandBorderRadius()"
+        [minuteMarkerBorderRadius]="minuteMarkerBorderRadius()"
+        [hourMarkerBorderRadius]="hourMarkerBorderRadius()"
+      ></ngx-analog-clock>
+    </div>
+  </div>
+
+  <!-- Controls Panel -->
+  <div class="overflow-y-auto max-h-[calc(100vh-2rem)] border border-gray-300 rounded-lg p-4">
+    <h3 class="text-xl font-bold mb-4">Clock Configuration</h3>
+
+    <!-- Time Control -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Time</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="useRealTime()"
+          (ngModelChange)="toggleRealTime($event)"
+          id="useRealTime"
+          class="mr-2"
+        />
+        <label for="useRealTime">Use Real-time</label>
+      </div>
+      <div class="flex items-center">
+        <label class="mr-2">Custom Time:</label>
+        <input
+          [value]="date().toTimeString().substring(0, 5)"
+          type="time"
+          (change)="setCustomTime($event)"
+          [disabled]="useRealTime()"
+          class="border rounded px-2 py-1"
+          [class.opacity-50]="useRealTime()"
+        />
+        @if(useRealTime()){
+        <div class="ml-2 text-sm text-gray-600">Toggle real-time off to set custom time</div>
+        }
+      </div>
+    </section>
+
+    <!-- Animation Properties -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Animation</h3>
+      <div class="grid gap-2">
+        <div>
+          <label for="transitionDuration" class="block mb-1">Transition Duration:</label>
+          <input
+            type="text"
+            [ngModel]="transitionDuration()"
+            (ngModelChange)="transitionDuration.set($event)"
+            id="transitionDuration"
+            class="border rounded px-2 py-1 w-full"
+          />
+        </div>
+        <div>
+          <label for="transitionFunction" class="block mb-1">Transition Function:</label>
+          <input
+            type="text"
+            [ngModel]="transitionFunction()"
+            (ngModelChange)="transitionFunction.set($event)"
+            id="transitionFunction"
+            class="border rounded px-2 py-1 w-full"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Clock Numbers -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Clock Numbers</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showClockNumbers()"
+          (ngModelChange)="showClockNumbers.set($event)"
+          id="showClockNumbers"
+          class="mr-2"
+        />
+        <label for="showClockNumbers">Show Numbers</label>
+      </div>
+      <div>
+        <label for="clockNumberColor" class="block mb-1">Numbers Color:</label>
+        <input
+          type="color"
+          [ngModel]="clockNumberColor()"
+          (ngModelChange)="clockNumberColor.set($event)"
+          id="clockNumberColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="numbersOffsetPercent" class="block mb-1">Numbers Offset (% from center):</label>
+        <input
+          type="number"
+          [ngModel]="numbersOffsetPercent()"
+          (ngModelChange)="numbersOffsetPercent.set($event)"
+          id="numbersOffsetPercent"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Dial -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Dial</h3>
+      <div>
+        <label for="dialColor" class="block mb-1">Dial Color/Gradient:</label>
+        <input
+          type="text"
+          [ngModel]="dialColor()"
+          (ngModelChange)="dialColor.set($event)"
+          id="dialColor"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Bezel -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Bezel</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showBezel()"
+          (ngModelChange)="showBezel.set($event)"
+          id="showBezel"
+          class="mr-2"
+        />
+        <label for="showBezel">Show Bezel</label>
+      </div>
+      <div>
+        <label for="bezelThickness" class="block mb-1">Bezel Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="bezelThickness()"
+          (ngModelChange)="bezelThickness.set($event)"
+          id="bezelThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="bezelColor" class="block mb-1">Bezel Color:</label>
+        <input
+          type="color"
+          [ngModel]="bezelColor()"
+          (ngModelChange)="bezelColor.set($event)"
+          id="bezelColor"
+          class="border rounded w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Pivot -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Pivot</h3>
+      <div>
+        <label for="pivotThickness" class="block mb-1">Pivot Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="pivotThickness()"
+          (ngModelChange)="pivotThickness.set($event)"
+          id="pivotThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="pivotColor" class="block mb-1">Pivot Color:</label>
+        <input
+          type="color"
+          [ngModel]="pivotColor()"
+          (ngModelChange)="pivotColor.set($event)"
+          id="pivotColor"
+          class="border rounded w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Hour Hand -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Hour Hand</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showHourHand()"
+          (ngModelChange)="showHourHand.set($event)"
+          id="showHourHand"
+          class="mr-2"
+        />
+        <label for="showHourHand">Show Hour Hand</label>
+      </div>
+      <div>
+        <label for="hourHandThickness" class="block mb-1">Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="hourHandThickness()"
+          (ngModelChange)="hourHandThickness.set($event)"
+          id="hourHandThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="hourHandLength" class="block mb-1">Length:</label>
+        <input
+          type="text"
+          [ngModel]="hourHandLength()"
+          (ngModelChange)="hourHandLength.set($event)"
+          id="hourHandLength"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="hourHandColor" class="block mb-1">Color:</label>
+        <input
+          type="color"
+          [ngModel]="hourHandColor()"
+          (ngModelChange)="hourHandColor.set($event)"
+          id="hourHandColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="hourHandBorderRadius" class="block mb-1">Border Radius:</label>
+        <input
+          type="text"
+          [ngModel]="hourHandBorderRadius()"
+          (ngModelChange)="hourHandBorderRadius.set($event)"
+          id="hourHandBorderRadius"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Minute Hand -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Minute Hand</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showMinuteHand()"
+          (ngModelChange)="showMinuteHand.set($event)"
+          id="showMinuteHand"
+          class="mr-2"
+        />
+        <label for="showMinuteHand">Show Minute Hand</label>
+      </div>
+      <div>
+        <label for="minuteHandThickness" class="block mb-1">Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="minuteHandThickness()"
+          (ngModelChange)="minuteHandThickness.set($event)"
+          id="minuteHandThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteHandLength" class="block mb-1">Length:</label>
+        <input
+          type="text"
+          [ngModel]="minuteHandLength()"
+          (ngModelChange)="minuteHandLength.set($event)"
+          id="minuteHandLength"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteHandColor" class="block mb-1">Color:</label>
+        <input
+          type="color"
+          [ngModel]="minuteHandColor()"
+          (ngModelChange)="minuteHandColor.set($event)"
+          id="minuteHandColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteHandBorderRadius" class="block mb-1">Border Radius:</label>
+        <input
+          type="text"
+          [ngModel]="minuteHandBorderRadius()"
+          (ngModelChange)="minuteHandBorderRadius.set($event)"
+          id="minuteHandBorderRadius"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Second Hand -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Second Hand</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showSecondHand()"
+          (ngModelChange)="showSecondHand.set($event)"
+          id="showSecondHand"
+          class="mr-2"
+        />
+        <label for="showSecondHand">Show Second Hand</label>
+      </div>
+      <div>
+        <label for="secondHandThickness" class="block mb-1">Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="secondHandThickness()"
+          (ngModelChange)="secondHandThickness.set($event)"
+          id="secondHandThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="secondHandLength" class="block mb-1">Length:</label>
+        <input
+          type="text"
+          [ngModel]="secondHandLength()"
+          (ngModelChange)="secondHandLength.set($event)"
+          id="secondHandLength"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="secondHandColor" class="block mb-1">Color:</label>
+        <input
+          type="color"
+          [ngModel]="secondHandColor()"
+          (ngModelChange)="secondHandColor.set($event)"
+          id="secondHandColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="secondHandBorderRadius" class="block mb-1">Border Radius:</label>
+        <input
+          type="text"
+          [ngModel]="secondHandBorderRadius()"
+          (ngModelChange)="secondHandBorderRadius.set($event)"
+          id="secondHandBorderRadius"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Hour Markers -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Hour Markers</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showHourMarkers()"
+          (ngModelChange)="showHourMarkers.set($event)"
+          id="showHourMarkers"
+          class="mr-2"
+        />
+        <label for="showHourMarkers">Show Hour Markers</label>
+      </div>
+      <div>
+        <label for="hourMarkerThickness" class="block mb-1">Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="hourMarkerThickness()"
+          (ngModelChange)="hourMarkerThickness.set($event)"
+          id="hourMarkerThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="hourMarkerLength" class="block mb-1">Length:</label>
+        <input
+          type="text"
+          [ngModel]="hourMarkerLength()"
+          (ngModelChange)="hourMarkerLength.set($event)"
+          id="hourMarkerLength"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="hourMarkerColor" class="block mb-1">Color:</label>
+        <input
+          type="color"
+          [ngModel]="hourMarkerColor()"
+          (ngModelChange)="hourMarkerColor.set($event)"
+          id="hourMarkerColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="hourMarkerBorderRadius" class="block mb-1">Border Radius:</label>
+        <input
+          type="text"
+          [ngModel]="hourMarkerBorderRadius()"
+          (ngModelChange)="hourMarkerBorderRadius.set($event)"
+          id="hourMarkerBorderRadius"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Minute Markers -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Minute Markers</h3>
+      <div class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [ngModel]="showMinuteMarkers()"
+          (ngModelChange)="showMinuteMarkers.set($event)"
+          id="showMinuteMarkers"
+          class="mr-2"
+        />
+        <label for="showMinuteMarkers">Show Minute Markers</label>
+      </div>
+      <div>
+        <label for="minuteMarkerThickness" class="block mb-1">Thickness:</label>
+        <input
+          type="text"
+          [ngModel]="minuteMarkerThickness()"
+          (ngModelChange)="minuteMarkerThickness.set($event)"
+          id="minuteMarkerThickness"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteMarkerLength" class="block mb-1">Length:</label>
+        <input
+          type="text"
+          [ngModel]="minuteMarkerLength()"
+          (ngModelChange)="minuteMarkerLength.set($event)"
+          id="minuteMarkerLength"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteMarkerColor" class="block mb-1">Color:</label>
+        <input
+          type="color"
+          [ngModel]="minuteMarkerColor()"
+          (ngModelChange)="minuteMarkerColor.set($event)"
+          id="minuteMarkerColor"
+          class="border rounded w-full"
+        />
+      </div>
+      <div>
+        <label for="minuteMarkerBorderRadius" class="block mb-1">Border Radius:</label>
+        <input
+          type="text"
+          [ngModel]="minuteMarkerBorderRadius()"
+          (ngModelChange)="minuteMarkerBorderRadius.set($event)"
+          id="minuteMarkerBorderRadius"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Marker Positioning -->
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Marker Positioning</h3>
+      <div>
+        <label for="markerOffsetPercent" class="block mb-1">Marker Offset (% from center):</label>
+        <input
+          type="number"
+          [ngModel]="markerOffsetPercent()"
+          (ngModelChange)="markerOffsetPercent.set($event)"
+          id="markerOffsetPercent"
+          class="border rounded px-2 py-1 w-full"
+        />
+      </div>
+    </section>
+  </div>
+</div>

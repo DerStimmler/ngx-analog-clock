@@ -1,0 +1,55 @@
+:host {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1;
+  display: block;
+}
+
+.dial {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  z-index: 2;
+}
+
+.pivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translatex(-50%) translatey(-50%);
+  border-radius: 100%;
+  z-index: 6;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center 0;
+}
+
+.hour-hand {
+  z-index: 3;
+}
+
+.minute-hand {
+  z-index: 4;
+}
+
+.second-hand {
+  z-index: 5;
+}
+
+.marker {
+  position: absolute;
+  transform-origin: 0 0;
+  z-index: 2;
+}
+
+.clock-number {
+  position: absolute;
+  font-weight: bold;
+  user-select: none;
+  font-size: 1.4rem;
+  transform: translate(-50%, -50%);
+}

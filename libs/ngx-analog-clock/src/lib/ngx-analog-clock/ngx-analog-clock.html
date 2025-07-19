@@ -1,1 +1,68 @@
-<p>NgxAnalogClock works!</p>
+<div
+  class="dial"
+  [style.background]="dialColor()"
+  [style.border]="`${showBezel() ? bezelThickness() : 0} solid ${bezelColor()}`"
+></div>
+<div
+  class="pivot"
+  [style.height]="pivotThickness()"
+  [style.width]="pivotThickness()"
+  [style.background]="pivotColor()"
+></div>
+@if(showHourHand()){
+<div
+  class="hand hour-hand"
+  [style.background]="hourHandColor()"
+  [style.width]="hourHandThickness()"
+  [style.height]="`calc(${hourHandLength()} / 2)`"
+  [style.transform]="`translateX(-50%) rotate(calc(${adjustedHoursDegrees()}deg - 180deg))`"
+  [style.transition]="`transform ${transitionDuration()} ${transitionFunction()}`"
+  [style.border-radius]="hourHandBorderRadius()"
+></div>
+} @if(showMinuteHand()){
+<div
+  class="hand minute-hand"
+  [style.background]="minuteHandColor()"
+  [style.width]="minuteHandThickness()"
+  [style.height]="`calc(${minuteHandLength()} / 2)`"
+  [style.transform]="`translateX(-50%) rotate(calc(${adjustedMinutesDegrees()}deg - 180deg))`"
+  [style.transition]="`transform ${transitionDuration()} ${transitionFunction()}`"
+  [style.border-radius]="minuteHandBorderRadius()"
+></div>
+} @if(showSecondHand()){
+<div
+  class="hand second-hand"
+  [style.background]="secondHandColor()"
+  [style.width]="secondHandThickness()"
+  [style.height]="`calc(${secondHandLength()} / 2)`"
+  [style.transform]="`translateX(-50%) rotate(calc(${adjustedSecondsDegrees()}deg - 180deg))`"
+  [style.transition]="`transform ${transitionDuration()} ${transitionFunction()}`"
+  [style.border-radius]="secondHandBorderRadius()"
+></div>
+} @for (marker of markers(); track marker.minute){ @switch (marker.type) { @case ('hour') { @if(showHourMarkers()){
+<div
+  class="marker"
+  [style.left]="marker.left"
+  [style.top]="marker.top"
+  [style.width]="hourMarkerThickness()"
+  [style.height]="hourMarkerLength()"
+  [style.transform]="marker.transform"
+  [style.background]="hourMarkerColor()"
+  [style.border-radius]="hourMarkerBorderRadius()"
+></div>
+} } @case ('minute') { @if(showMinuteMarkers()){
+<div
+  class="marker"
+  [style.left]="marker.left"
+  [style.top]="marker.top"
+  [style.width]="minuteMarkerThickness()"
+  [style.height]="minuteMarkerLength()"
+  [style.transform]="marker.transform"
+  [style.background]="minuteMarkerColor()"
+  [style.border-radius]="minuteMarkerBorderRadius()"
+></div>
+} } } } @if(showClockNumbers()){ @for (number of numbers(); track number.number){
+<div class="clock-number" [style.left]="number.left" [style.top]="number.top" [style.color]="clockNumberColor()">
+  {{number.number}}
+</div>
+} }

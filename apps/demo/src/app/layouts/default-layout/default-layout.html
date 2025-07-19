@@ -1,0 +1,28 @@
+<header class="bg-gray-800 text-white p-4 shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <a routerLink="/">
+      <h1 class="text-2xl font-bold cursor-pointer" routerLink="/">ngx-analog-clock</h1>
+    </a>
+    <a
+      href="https://github.com/DerStimmler/ngx-analog-clock"
+      target="_blank"
+      class="flex items-center hover:text-gray-300 transition gap-2"
+    >
+      <img ngSrc="images/github-mark.svg" alt="GitHub" width="24" height="24" class="w-6 h-6 invert" />
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main class="container mx-auto py-6">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="bg-gray-100 py-4 mt-8">
+  <div class="container mx-auto text-center text-gray-600">
+    <p>
+      Made with ❤️ by
+      <a href="https://github.com/DerStimmler" target="_blank" class="text-blue-600 hover:underline">DerStimmler</a>
+    </p>
+  </div>
+</footer>

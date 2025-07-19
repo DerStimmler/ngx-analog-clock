@@ -2,7 +2,7 @@
   "name": "ngx-analog-clock",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ngx-analog-clock/src",
-  "prefix": "lib",
+  "prefix": "",
   "projectType": "library",
   "release": {
     "version": {
