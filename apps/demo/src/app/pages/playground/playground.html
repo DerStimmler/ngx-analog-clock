@@ -64,10 +64,11 @@
         <label for="useRealTime">Use Real-time</label>
       </div>
       <div class="flex items-center">
-        <label class="mr-2">Custom Time:</label>
+        <label for="customTime" class="mr-2">Custom Time:</label>
         <input
           [value]="date().toTimeString().substring(0, 5)"
           type="time"
+          id="customTime"
           (change)="setCustomTime($event)"
           [disabled]="useRealTime()"
           class="border rounded px-2 py-1"

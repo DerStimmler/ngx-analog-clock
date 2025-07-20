@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 import { DefaultLayout } from './layouts/default-layout/default-layout';
-import { App } from './app';
 import { Playground } from './pages/playground/playground';
 import { Home } from './pages/home/home';
 
