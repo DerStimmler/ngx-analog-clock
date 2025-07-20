@@ -22,7 +22,12 @@
   },
   "homepage": "https://derstimmler.github.io/ngx-analog-clock/",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "demo": "nx serve demo",
+    "test": "nx run-many --all --target=test --parallel",
+    "build": "nx run-many --all --target=build --parallel",
+    "lint": "nx run-many --all --target=lint --parallel"
+  },
   "dependencies": {
     "@angular/common": "~20.1.0",
     "@angular/compiler": "~20.1.0",
