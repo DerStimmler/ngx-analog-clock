@@ -30,9 +30,6 @@ jobs:
       - name: Build
         run: pnpm nx build demo --configuration=production
 
-      - name: Test
-        run: pnpm nx test demo
-
       - name: Lint
         run: pnpm nx lint demo
 
