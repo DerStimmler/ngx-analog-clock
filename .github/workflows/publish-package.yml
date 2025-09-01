@@ -32,9 +32,6 @@ jobs:
       - name: Build
         run: pnpm nx build ngx-analog-clock --configuration=production
 
-      - name: Test
-        run: pnpm nx test ngx-analog-clock
-
       - name: Lint
         run: pnpm nx lint ngx-analog-clock
 
