@@ -1,14 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  input,
-  linkedSignal,
-  signal,
-  WritableSignal,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core';
 
 @Component({
   selector: 'ngx-analog-clock',
@@ -37,15 +28,15 @@ export class NgxAnalogClock {
   minuteHandLength = input<string>('90%');
   secondHandThickness = input<string>('3px');
   secondHandLength = input<string>('97%');
-  pivotColor = input<string>('red');
-  hourHandColor = input<string>('blue');
-  minuteHandColor = input<string>('purple');
-  secondHandColor = input<string>('orange');
-  hourMarkerColor = input<string>('turquoise');
-  minuteMarkerColor = input<string>('brown');
-  clockNumberColor = input<string>('gold');
-  dialColor = input<string>('linear-gradient(#e66465, #9198e5)');
-  bezelColor = input<string>('black');
+  pivotColor = input<string>('#ff0000');
+  hourHandColor = input<string>('#222222');
+  minuteHandColor = input<string>('#222222');
+  secondHandColor = input<string>('#222222');
+  hourMarkerColor = input<string>('#222222');
+  minuteMarkerColor = input<string>('#222222');
+  clockNumberColor = input<string>('#222222');
+  dialColor = input<string>('transparent');
+  bezelColor = input<string>('#222222');
   markerOffsetPercent = input<number>(96);
   numbersOffsetPercent = input<number>(70);
   hourMarkerThickness = input<string>('2%');
