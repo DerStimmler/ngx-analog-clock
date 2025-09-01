@@ -1,3 +1,6 @@
-<div class="aspect-square max-h-[25%]">
-  <ngx-analog-clock [date]="date()"></ngx-analog-clock>
+<div class="grid h-full">
+  <div class="my-auto flex flex-col justify-items-center items-center gap-12">
+    <ngx-analog-clock class="w-full max-w-[500px] max-h-[500px]" [date]="date()"></ngx-analog-clock>
+    <h2 class="font-semibold text-xl">Customizable analog clock for you Angular apps</h2>
+  </div>
 </div>

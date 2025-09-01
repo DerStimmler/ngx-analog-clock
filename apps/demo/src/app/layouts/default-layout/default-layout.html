@@ -1,20 +1,26 @@
 <header class="bg-gray-800 text-white p-4 shadow-md">
   <div class="container mx-auto flex justify-between items-center">
-    <a routerLink="/">
-      <h1 class="text-2xl font-bold cursor-pointer" routerLink="/">ngx-analog-clock</h1>
-    </a>
-    <a
-      href="https://github.com/DerStimmler/ngx-analog-clock"
-      target="_blank"
-      class="flex items-center hover:text-gray-300 transition gap-2"
-    >
-      <img ngSrc="images/github-mark.svg" alt="GitHub" width="24" height="24" class="w-6 h-6 invert" />
-      <span>GitHub</span>
-    </a>
+    <div class="flex gap-8 items-center">
+      <a routerLink="/">
+        <h1 class="text-2xl font-bold cursor-pointer" routerLink="/">ngx-analog-clock</h1>
+      </a>
+      <a routerLink="/playground" routerLinkActive="border-b" class="hover:border-b"> Playground </a>
+      <a routerLink="/showcase" routerLinkActive="border-b" class="hover:border-b">Showcase </a>
+    </div>
+    <div>
+      <a
+        href="https://github.com/DerStimmler/ngx-analog-clock"
+        target="_blank"
+        class="flex items-center hover:text-gray-300 transition gap-2"
+      >
+        <img ngSrc="images/github-mark.svg" alt="GitHub" width="24" height="24" class="w-6 h-6 invert" />
+        <span>GitHub</span>
+      </a>
+    </div>
   </div>
 </header>
 
-<main class="container mx-auto py-6">
+<main class="container mx-auto py-6 min-h-0 h-full">
   <router-outlet></router-outlet>
 </main>
 

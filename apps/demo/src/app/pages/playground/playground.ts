@@ -10,7 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'demo-playground',
   imports: [CommonModule, NgxAnalogClock, FormsModule, RouterModule, NgxAnalogClock],
   templateUrl: './playground.html',
-  styles: ``,
+  styles: `:host { @apply grid h-full; }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Playground {

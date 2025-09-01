@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   selector: 'demo-root',
   template: `<router-outlet></router-outlet>`,
-  styles: `:host { @apply block h-full; }`,
+  styles: `:host { @apply block h-full min-h-svh; }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {}

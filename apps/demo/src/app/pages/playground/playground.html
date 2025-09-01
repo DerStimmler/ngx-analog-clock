@@ -1,9 +1,11 @@
 <h2 class="font-bold text-2xl mb-4">Playground</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-0">
   <!-- Clock Container -->
-  <div class="w-full aspect-square border border-gray-300 rounded-lg p-4 flex items-center justify-center">
-    <div class="w-full h-full max-w-[500px] max-h-[500px]">
+  <div class="border border-gray-300 rounded-lg p-4">
+    <h3 class="text-xl font-bold mb-4">Preview</h3>
+    <div class="grid place-items-center h-full">
       <ngx-analog-clock
+        class="w-full max-w-[500px] max-h-[500px]"
         [date]="date()"
         [showHourHand]="showHourHand()"
         [showMinuteHand]="showMinuteHand()"
@@ -47,9 +49,8 @@
   </div>
 
   <!-- Controls Panel -->
-  <div class="overflow-y-auto max-h-[calc(100vh-2rem)] border border-gray-300 rounded-lg p-4">
+  <div class="overflow-y-auto border border-gray-300 rounded-lg p-4">
     <h3 class="text-xl font-bold mb-4">Clock Configuration</h3>
-
     <!-- Time Control -->
     <section class="mb-6">
       <h3 class="text-lg font-semibold mb-2">Time</h3>
