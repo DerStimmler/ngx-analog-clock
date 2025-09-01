@@ -1,101 +1,97 @@
-# NgxAnalogClock
+<div align="center" width="100%">
+  <img src="./docs/images/logo.gif" alt="Analog Clock animation" height="128"/>
+</div>
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+# ngx-analog-clock
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+[![npm version](https://img.shields.io/npm/v/ngx-analog-clock)](https://www.npmjs.org/package/ngx-analog-clock/)
+[![npm downloads](https://img.shields.io/npm/dt/ngx-analog-clock)](https://www.npmjs.org/package/ngx-analog-clock/)
+[![GitHub license](https://img.shields.io/github/license/DerStimmler/ngx-analog-clock)](https://github.com/DerStimmler/ngx-analog-clock/blob/main/LICENSE.md)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+Angular library for easier use of the View Transitions API
 
-## Run tasks
+## Demo
 
-To run the dev server for your app, use:
+https://derstimmler.github.io/ngx-analog-clock/
 
-```sh
-npx nx serve demo
+## Installation
+
+Available on [npm](https://www.npmjs.org/package/ngx-analog-clock/).
+
+```bash
+npm install ngx-analog-clock
 ```
 
-To create a production bundle:
+## Usage
 
-```sh
-npx nx build demo
+Import the component:
+
+```typescript
+import { NgxAnalogClock } from 'ngx-analog-clock';
+
+date = new Date();
 ```
 
-To see all available targets to run for a project, run:
+Provide at least a `Date` object to the component:
 
-```sh
-npx nx show project demo
+```angular2html
+<ngx-analog-clock [date]="date"></ngx-analog-clock>
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+> [!TIP]
+> To get a `Date` signal of the current local time that updates every second you can use this snippet:
+> ```typescript
+> import { toSignal } from '@angular/core/rxjs-interop';
+> import { map, interval } from 'rxjs';
+> 
+> date = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });
+>```
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Configuration
 
-## Add new projects
+| Input                      | Description                                      | Default Value                    |
+|----------------------------|--------------------------------------------------|----------------------------------|
+| `date`                     | Current date/time driving the clock              | **Required**                     |
+| `showHourHand`             | Toggle visibility of the hour hand               | `true`                           |
+| `showMinuteHand`           | Toggle visibility of the minute hand             | `true`                           |
+| `showSecondHand`           | Toggle visibility of the second hand             | `true`                           |
+| `showHourMarkers`          | Show hour tick markers                           | `true`                           |
+| `showMinuteMarkers`        | Show minute tick markers                         | `true`                           |
+| `showClockNumbers`         | Display clock face numbers                       | `true`                           |
+| `showBezel`                | Show outer bezel (rim)                           | `true`                           |
+| `transitionDuration`       | Duration of hand movement transitions            | `'0.5s'`                         |
+| `transitionFunction`       | CSS transition timing function for hand movement | `'cubic-bezier(0.4, 2, 0.3, 1)'` |
+| `bezelThickness`           | Thickness of the bezel                           | `'3px'`                          |
+| `pivotThickness`           | Size of the pivot (center cap)                   | `'12px'`                         |
+| `hourHandThickness`        | Thickness of the hour hand                       | `'9px'`                          |
+| `hourHandLength`           | Length of the hour hand relative to radius       | `'60%'`                          |
+| `minuteHandThickness`      | Thickness of the minute hand                     | `'6px'`                          |
+| `minuteHandLength`         | Length of the minute hand relative to radius     | `'90%'`                          |
+| `secondHandThickness`      | Thickness of the second hand                     | `'3px'`                          |
+| `secondHandLength`         | Length of the second hand relative to radius     | `'97%'`                          |
+| `pivotColor`               | Color of the pivot                               | `'#ff0000'`                      |
+| `hourHandColor`            | Color of the hour hand                           | `'#222222'`                      |
+| `minuteHandColor`          | Color of the minute hand                         | `'#222222'`                      |
+| `secondHandColor`          | Color of the second hand                         | `'#222222'`                      |
+| `hourMarkerColor`          | Color of the hour markers                        | `'#222222'`                      |
+| `minuteMarkerColor`        | Color of the minute markers                      | `'#222222'`                      |
+| `clockNumberColor`         | Color of the numbers                             | `'#222222'`                      |
+| `dialColor`                | Background color of the clock face               | `'transparent'`                  |
+| `bezelColor`               | Color of the bezel                               | `'#222222'`                      |
+| `markerOffsetPercent`      | Radial offset for markers (relative to radius)   | `96`                             |
+| `numbersOffsetPercent`     | Radial offset for numbers (relative to radius)   | `70`                             |
+| `hourMarkerThickness`      | Thickness of hour markers                        | `'2%'`                           |
+| `hourMarkerLength`         | Length of hour markers                           | `'7%'`                           |
+| `minuteMarkerThickness`    | Thickness of minute markers                      | `'1%'`                           |
+| `minuteMarkerLength`       | Length of minute markers                         | `'3%'`                           |
+| `hourHandBorderRadius`     | Border radius of the hour hand                   | `'2px'`                          |
+| `minuteHandBorderRadius`   | Border radius of the minute hand                 | `'2px'`                          |
+| `secondHandBorderRadius`   | Border radius of the second hand                 | `'2px'`                          |
+| `minuteMarkerBorderRadius` | Border radius of minute markers                  | `'2px'`                          |
+| `hourMarkerBorderRadius`   | Border radius of hour markers                    | `'2px'`                          |
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+Most color inputs like `dialColor`, `minuteHandColor` or `hourMarkerColor` are implemented as CSS `background` property. So it's also possible to use gradient or even images.
 
-Use the plugin's generator to create new projects.
+### Responsiveness
 
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+The component behaves like a normal block element and scales dynamically. So just set the `width` and `height` as you like.
