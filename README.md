@@ -22,6 +22,8 @@ Available on [npm](https://www.npmjs.org/package/ngx-analog-clock/).
 npm install ngx-analog-clock
 ```
 
+Required Angular version: `>=19.0.0`
+
 ## Usage
 
 Import the component:

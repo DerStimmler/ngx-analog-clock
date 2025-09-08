@@ -6,6 +6,10 @@ on:
       - 'v*'
 
 jobs:
+  lib-compatibility-check:
+    name: Library compatibility check
+    uses: ./.github/workflows/lib-compatibility-check.yml
+
   publish:
     name: Publish
     runs-on: ubuntu-latest
