@@ -93,7 +93,9 @@ export class NgxAnalogClock {
     return numbers;
   });
 
-  private rawHoursDegrees = computed(() => (this.date().getHours() * 60 + this.date().getMinutes()) * (360 / 12 / 60));
+  private rawHoursDegrees = computed(
+    () => (this.date().getHours() * 3600 + this.date().getMinutes() * 60 + this.date().getSeconds()) * (360 / 12 / 3600)
+  );
   private rawMinutesDegrees = computed(
     () => (this.date().getHours() * 3600 + this.date().getMinutes() * 60 + this.date().getSeconds()) * (360 / 60 / 60)
   );
