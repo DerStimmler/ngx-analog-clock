@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core';
 
 @Component({
   selector: 'ngx-analog-clock',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './ngx-analog-clock.html',
   styleUrl: './ngx-analog-clock.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -17,15 +17,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/ngx-analog-clock/ng-package.json"
+        "project": "libs/ngx-analog-clock/ng-package.json",
+        "tsConfig": "libs/ngx-analog-clock/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "libs/ngx-analog-clock/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "libs/ngx-analog-clock/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     },
