@@ -1,17 +1,17 @@
 import { Route } from '@angular/router';
-import { DefaultLayout } from './layouts/default-layout/default-layout';
-import { Playground } from './pages/playground/playground';
-import { Home } from './pages/home/home';
-import { Showcase } from './pages/showcase/showcase';
+
+
+
+
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    component: DefaultLayout,
+    loadComponent: () => import('./layouts/default-layout/default-layout').then(m => m.DefaultLayout),
     children: [
-      { path: '', component: Home },
-      { path: 'playground', component: Playground },
-      { path: 'showcase', component: Showcase },
+      { path: '', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
+      { path: 'playground', loadComponent: () => import('./pages/playground/playground').then(m => m.Playground) },
+      { path: 'showcase', loadComponent: () => import('./pages/showcase/showcase').then(m => m.Showcase) },
     ],
   },
   { path: '**', redirectTo: '' },
