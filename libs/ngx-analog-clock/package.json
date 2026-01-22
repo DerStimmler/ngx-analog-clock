@@ -22,7 +22,6 @@
   },
   "homepage": "https://derstimmler.github.io/ngx-analog-clock/",
   "peerDependencies": {
-    "@angular/common": ">=19.0.0",
     "@angular/core": ">=19.0.0"
   },
   "sideEffects": false
