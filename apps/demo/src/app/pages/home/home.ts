@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NgxAnalogClock } from 'ngx-analog-clock';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, interval } from 'rxjs';
@@ -7,7 +7,7 @@ import { NgxRippleComponent } from '@omnedia/ngx-ripple';
 
 @Component({
   selector: 'demo-home',
-  imports: [CommonModule, NgxAnalogClock, NgxRippleComponent],
+  imports: [NgxAnalogClock, NgxRippleComponent],
   templateUrl: './home.html',
   styles: `
     ::ng-deep main { @apply !max-w-[unset] !p-0;}

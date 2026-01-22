@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'demo-playground',
-  imports: [CommonModule, NgxAnalogClock, FormsModule, RouterModule, NgxAnalogClock],
+  imports: [NgxAnalogClock, FormsModule, RouterModule, NgxAnalogClock],
   templateUrl: './playground.html',
   styles: `:host { @apply grid h-full max-h-[80svh]; }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
