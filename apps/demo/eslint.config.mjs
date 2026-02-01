@@ -13,22 +13,22 @@ export default [
         {
           type: 'attribute',
           prefix: 'demo',
-          style: 'camelCase',
-        },
+          style: 'camelCase'
+        }
       ],
       '@angular-eslint/component-selector': [
         'error',
         {
           type: 'element',
           prefix: 'demo',
-          style: 'kebab-case',
-        },
-      ],
-    },
+          style: 'kebab-case'
+        }
+      ]
+    }
   },
   {
     files: ['**/*.html'],
     // Override or add rules here
-    rules: {},
-  },
+    rules: {}
+  }
 ];

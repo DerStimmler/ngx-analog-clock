@@ -9,13 +9,13 @@ export default [
       '@nx/dependency-checks': [
         'error',
         {
-          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
-        },
-      ],
+          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}']
+        }
+      ]
     },
     languageOptions: {
-      parser: await import('jsonc-eslint-parser'),
-    },
+      parser: await import('jsonc-eslint-parser')
+    }
   },
   ...nx.configs['flat/angular'],
   ...nx.configs['flat/angular-template'],
@@ -27,22 +27,22 @@ export default [
         {
           type: 'attribute',
           prefix: '',
-          style: 'camelCase',
-        },
+          style: 'camelCase'
+        }
       ],
       '@angular-eslint/component-selector': [
         'error',
         {
           type: 'element',
           prefix: '',
-          style: 'kebab-case',
-        },
-      ],
-    },
+          style: 'kebab-case'
+        }
+      ]
+    }
   },
   {
     files: ['**/*.html'],
     // Override or add rules here
-    rules: {},
-  },
+    rules: {}
+  }
 ];

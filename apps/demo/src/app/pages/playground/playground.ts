@@ -1,4 +1,3 @@
-
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -11,7 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   imports: [NgxAnalogClock, FormsModule, RouterModule, NgxAnalogClock],
   templateUrl: './playground.html',
   styles: `:host { @apply grid h-full max-h-[80svh]; }`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Playground {
   private interval = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });

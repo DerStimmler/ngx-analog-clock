@@ -6,6 +6,6 @@ import { RouterModule } from '@angular/router';
   selector: 'demo-root',
   template: `<router-outlet />`,
   styles: `:host { @apply block h-full min-h-svh; }`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {}

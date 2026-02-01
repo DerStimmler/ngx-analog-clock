@@ -15,7 +15,7 @@ import { NgxRippleComponent } from '@omnedia/ngx-ripple';
     :host ::ng-deep .om-ripple-background { transform: scale(4); }
     :host ::ng-deep om-ripple .om-ripple { @apply overflow-visible; }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Home {
   protected date = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });

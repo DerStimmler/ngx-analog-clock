@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core';
 
 @Component({
@@ -6,7 +5,7 @@ import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } fro
   imports: [],
   templateUrl: './ngx-analog-clock.html',
   styleUrl: './ngx-analog-clock.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxAnalogClock {
   date = input.required<Date>();
@@ -68,7 +67,7 @@ export class NgxAnalogClock {
         top: `${topPercent}%`,
         transform: `rotate(${angleDeg}deg) translateX(-50%)`,
         type: markerType,
-        minute: i + 1,
+        minute: i + 1
       });
     }
     return markers;
@@ -86,7 +85,7 @@ export class NgxAnalogClock {
       numbers.push({
         left: `${leftPercent}%`,
         top: `${topPercent}%`,
-        number: i,
+        number: i
       });
     }
 
@@ -106,15 +105,15 @@ export class NgxAnalogClock {
   // Track adjusted rotations to avoid full-circle jumps, otherwise the arm would rotate multiple times when jumping from idle time to current time
   protected adjustedHoursDegrees = linkedSignal<number, number>({
     source: this.rawHoursDegrees,
-    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source),
+    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source)
   });
   protected adjustedMinutesDegrees = linkedSignal<number, number>({
     source: this.rawMinutesDegrees,
-    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source),
+    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source)
   });
   protected adjustedSecondsDegrees = linkedSignal<number, number>({
     source: this.rawSecondsDegrees,
-    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source),
+    computation: (source, previous) => this.calculateRotationWithShortestPath(source, previous?.value ?? source)
   });
 
   private calculateRotationWithShortestPath(source: number, previous: number): number {

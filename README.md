@@ -42,17 +42,18 @@ Provide at least a `Date` object to the component:
 
 > [!TIP]
 > To get a `Date` signal of the current local time that updates every second you can use this snippet:
+>
 > ```typescript
 > import { toSignal } from '@angular/core/rxjs-interop';
 > import { map, interval } from 'rxjs';
-> 
+>
 > date = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });
->```
+> ```
 
 ### Configuration
 
 | Input                      | Description                                      | Default Value                    |
-|----------------------------|--------------------------------------------------|----------------------------------|
+| -------------------------- | ------------------------------------------------ | -------------------------------- |
 | `date`                     | Current date/time driving the clock              | **Required**                     |
 | `showHourHand`             | Toggle visibility of the hour hand               | `true`                           |
 | `showMinuteHand`           | Toggle visibility of the minute hand             | `true`                           |
