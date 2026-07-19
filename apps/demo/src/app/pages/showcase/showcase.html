@@ -1,449 +1,84 @@
-<h2 class="font-bold text-2xl mb-4">Showcase</h2>
+<section class="space-y-8">
+  <header class="max-w-4xl">
+    <p class="mb-2 text-sm font-semibold uppercase tracking-[0.24em] text-sky-700">Showcase</p>
+    <h2 class="mb-3 text-4xl font-black text-slate-950 md:text-5xl">Analog clocks with a point of view</h2>
+    <p class="text-lg leading-8 text-slate-600">
+      Curated presets that demonstrate visual range and practical UI patterns: quiet product clocks, loud editorial
+      pieces, developer themes, gradients, and a seconds-only timer.
+    </p>
+  </header>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <!-- Classic -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Classic</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#ffffff"
-        bezelColor="#000000"
-        hourHandColor="#000000"
-        minuteHandColor="#000000"
-        secondHandColor="#ff0000"
-        hourMarkerColor="#000000"
-        minuteMarkerColor="#555555"
-        clockNumberColor="#555555"
-      />
-    </div>
-  </div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    @for (preset of presets; track preset.title) {
+    <article
+      class="overflow-hidden border p-5"
+      [style.background]="preset.cardBackground"
+      [style.border-color]="preset.borderColor"
+      [style.box-shadow]="preset.shadow"
+      [style.color]="preset.cardColor"
+    >
+      <div class="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <p class="mb-1 text-xs font-bold uppercase tracking-[0.18em] opacity-70">{{ preset.category }}</p>
+          <h3 class="text-2xl font-black leading-tight">{{ preset.title }}</h3>
+        </div>
+        <span
+          class="h-3 w-10 shrink-0 border"
+          [style.background]="preset.accent"
+          [style.border-color]="preset.cardColor"
+        ></span>
+      </div>
 
-  <!-- Neon -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Neon</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#000000"
-        bezelColor="#00ff00"
-        hourHandColor="#ff00ff"
-        minuteHandColor="#00ffff"
-        secondHandColor="#ffff00"
-        hourMarkerColor="#ff00ff"
-        minuteMarkerColor="#00ffff"
-        clockNumberColor="#ffffff"
-        transitionDuration="1s"
-      />
-    </div>
-  </div>
+      <div
+        class="mb-5 grid aspect-square place-items-center overflow-hidden border p-8"
+        [style.background]="preset.stageBackground"
+        [style.border-color]="preset.borderColor"
+      >
+        <ngx-analog-clock
+          [date]="date()"
+          class="w-full max-w-[360px]"
+          [showHourHand]="preset.config.showHourHand"
+          [showMinuteHand]="preset.config.showMinuteHand"
+          [showSecondHand]="preset.config.showSecondHand"
+          [showHourMarkers]="preset.config.showHourMarkers"
+          [showMinuteMarkers]="preset.config.showMinuteMarkers"
+          [showClockNumbers]="preset.config.showClockNumbers"
+          [showBezel]="preset.config.showBezel"
+          [transitionDuration]="preset.config.transitionDuration"
+          [transitionFunction]="preset.config.transitionFunction"
+          [bezelThickness]="preset.config.bezelThickness"
+          [pivotThickness]="preset.config.pivotThickness"
+          [hourHandThickness]="preset.config.hourHandThickness"
+          [hourHandLength]="preset.config.hourHandLength"
+          [minuteHandThickness]="preset.config.minuteHandThickness"
+          [minuteHandLength]="preset.config.minuteHandLength"
+          [secondHandThickness]="preset.config.secondHandThickness"
+          [secondHandLength]="preset.config.secondHandLength"
+          [pivotColor]="preset.config.pivotColor"
+          [hourHandColor]="preset.config.hourHandColor"
+          [minuteHandColor]="preset.config.minuteHandColor"
+          [secondHandColor]="preset.config.secondHandColor"
+          [hourMarkerColor]="preset.config.hourMarkerColor"
+          [minuteMarkerColor]="preset.config.minuteMarkerColor"
+          [clockNumberColor]="preset.config.clockNumberColor"
+          [dialColor]="preset.config.dialColor"
+          [bezelColor]="preset.config.bezelColor"
+          [markerOffsetPercent]="preset.config.markerOffsetPercent"
+          [numbersOffsetPercent]="preset.config.numbersOffsetPercent"
+          [hourMarkerThickness]="preset.config.hourMarkerThickness"
+          [hourMarkerLength]="preset.config.hourMarkerLength"
+          [minuteMarkerThickness]="preset.config.minuteMarkerThickness"
+          [minuteMarkerLength]="preset.config.minuteMarkerLength"
+          [hourHandBorderRadius]="preset.config.hourHandBorderRadius"
+          [minuteHandBorderRadius]="preset.config.minuteHandBorderRadius"
+          [secondHandBorderRadius]="preset.config.secondHandBorderRadius"
+          [minuteMarkerBorderRadius]="preset.config.minuteMarkerBorderRadius"
+          [hourMarkerBorderRadius]="preset.config.hourMarkerBorderRadius"
+        />
+      </div>
 
-  <!-- Minimalist -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Minimalist</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        [showBezel]="false"
-        [showSecondHand]="false"
-        [showMinuteMarkers]="false"
-        [showClockNumbers]="false"
-        dialColor="#f0f0f0"
-        hourHandColor="#2c3e50"
-        minuteHandColor="#2c3e50"
-        hourMarkerColor="#2c3e50"
-        transitionFunction="linear"
-        transitionDuration="1s"
-      />
-    </div>
+      <p class="min-h-14 text-sm leading-6 opacity-80">{{ preset.description }}</p>
+    </article>
+    }
   </div>
-
-  <!-- Cosmos -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Cosmos</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="url(https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=500&q=80)"
-        bezelColor="rgba(255,255,255,0.2)"
-        hourHandColor="#fff"
-        pivotColor="#00ff99"
-        minuteHandColor="#fff"
-        secondHandColor="#00ff99"
-        hourMarkerColor="rgba(255,255,255,0.8)"
-        minuteMarkerColor="rgba(255,255,255,0.4)"
-        clockNumberColor="#ffffff"
-        bezelThickness="1px"
-        transitionDuration="0.7s"
-      />
-    </div>
-  </div>
-
-  <!-- Timer -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Timer</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#ffffff"
-        bezelColor="#000000"
-        [showClockNumbers]="false"
-        [showHourHand]="false"
-        [showMinuteHand]="false"
-        hourMarkerLength="3%"
-        hourMarkerThickness="1%"
-        secondHandColor="#006ca5"
-        pivotColor="#000000"
-        transitionDuration="1s"
-        transitionFunction="linear"
-        secondHandThickness="6px"
-      />
-    </div>
-  </div>
-
-  <!-- Dark Mode -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Dark Mode</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#1a1a1a"
-        bezelColor="#333333"
-        bezelThickness="4px"
-        hourHandColor="#ffffff"
-        pivotColor="#666666"
-        minuteHandColor="#ffffff"
-        secondHandColor="#4f46e5"
-        hourMarkerColor="#666666"
-        minuteMarkerColor="#444444"
-        clockNumberColor="#888888"
-      />
-    </div>
-  </div>
-
-  <!-- Gradient -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Gradient</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="linear-gradient(45deg, #ff6b6b, #4ecdc4)"
-        bezelColor="#2c3e50"
-        pivotColor="#ffffff"
-        hourHandColor="#ffffff"
-        minuteHandColor="#ffffff"
-        secondHandColor="#ffffff"
-        hourMarkerColor="#ffffff"
-        minuteMarkerColor="#ffffff"
-        clockNumberColor="#ffffff"
-      />
-    </div>
-  </div>
-
-  <!-- Minimal Light -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Minimal Light</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#ffffff"
-        bezelColor="#f1f1f1"
-        hourHandColor="#333333"
-        minuteHandColor="#666666"
-        secondHandColor="#999999"
-        hourMarkerColor="#cccccc"
-        minuteMarkerColor="#eeeeee"
-        clockNumberColor="#999999"
-        bezelThickness="1px"
-        hourHandThickness="4px"
-        minuteHandThickness="3px"
-        secondHandThickness="1px"
-        [showMinuteMarkers]="false"
-        hourMarkerLength="4%"
-      />
-    </div>
-  </div>
-
-  <!-- Sunset Beach -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Sunset Beach</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=cover&w=400&q=80) center / cover"
-        bezelColor="rgba(255, 255, 255, 0.3)"
-        bezelThickness="5px"
-        hourHandColor="#ffffff"
-        minuteHandColor="#ffffff"
-        secondHandColor="#ff9f43"
-        hourMarkerColor="#ffffff"
-        minuteMarkerColor="rgba(255, 255, 255, 0.5)"
-        clockNumberColor="#ffffff"
-        [showMinuteMarkers]="false"
-        transitionDuration="0.8s"
-      />
-    </div>
-  </div>
-
-  <!-- Bauhaus -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Bauhaus</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#f0f0f0"
-        bezelColor="#000000"
-        hourHandColor="#ff0000"
-        minuteHandColor="#0000ff"
-        secondHandColor="#ffff00"
-        hourMarkerColor="#000000"
-        [showMinuteMarkers]="false"
-        [showClockNumbers]="false"
-        hourHandThickness="12px"
-        minuteHandThickness="8px"
-        secondHandThickness="4px"
-        hourMarkerThickness="6%"
-        hourMarkerLength="10%"
-        hourHandLength="50%"
-        minuteHandLength="70%"
-      />
-    </div>
-  </div>
-
-  <!-- Deep Space -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Deep Space</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="url(https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=500&q=80)"
-        pivotColor="radial-gradient(circle at center, #00ff99 0%, transparent 100%)"
-        pivotThickness="30px"
-        bezelColor="rgba(255, 255, 255, 0.1)"
-        hourHandColor="linear-gradient(to bottom, #00ff99 60%, transparent)"
-        minuteHandColor="linear-gradient(to bottom, #00ffcc 60%, transparent)"
-        secondHandColor="linear-gradient(to bottom, #ffffff 60%, transparent)"
-        hourMarkerColor="linear-gradient(to bottom, #00ff99, transparent)"
-        minuteMarkerColor="rgba(0, 255, 153, 0.3)"
-        clockNumberColor="#ffffff"
-        [showMinuteMarkers]="false"
-        [showClockNumbers]="false"
-        hourMarkerLength="20%"
-        hourHandThickness="6px"
-        minuteHandThickness="4px"
-        secondHandThickness="2px"
-        [numbersOffsetPercent]="85"
-      />
-    </div>
-  </div>
-
-  <!-- Minimalist Numbers -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Minimalist Numbers</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#ffffff"
-        bezelColor="transparent"
-        pivotColor="#000000"
-        pivotThickness="4px"
-        hourHandColor="#000000"
-        minuteHandColor="#000000"
-        secondHandColor="#ff0000"
-        [showHourMarkers]="false"
-        [showMinuteMarkers]="false"
-        clockNumberColor="#000000"
-        [numbersOffsetPercent]="92"
-        hourHandThickness="4px"
-        minuteHandThickness="3px"
-        secondHandThickness="1px"
-      />
-    </div>
-  </div>
-
-  <!-- Gradient Markers -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Gradient Markers</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#000000"
-        bezelColor="#333333"
-        pivotColor="radial-gradient(circle, #ff0000, #ff6b6b)"
-        pivotThickness="16px"
-        hourHandColor="#ffffff"
-        minuteHandColor="#ffffff"
-        secondHandColor="#ff0000"
-        hourMarkerColor="linear-gradient(to bottom, #ff6b6b, #4ecdc4)"
-        minuteMarkerColor="linear-gradient(to bottom, #4ecdc4, #45b7af)"
-        [showClockNumbers]="false"
-        hourMarkerThickness="3%"
-        minuteMarkerThickness="1%"
-        hourMarkerLength="12%"
-        minuteMarkerLength="6%"
-        [markerOffsetPercent]="92"
-      />
-    </div>
-  </div>
-
-  <!-- Metro -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Metro</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#e6e6e6"
-        bezelColor="#0078d4"
-        bezelThickness="8px"
-        pivotColor="#0078d4"
-        pivotThickness="24px"
-        hourHandColor="#0078d4"
-        minuteHandColor="#0078d4"
-        secondHandColor="#0078d4"
-        [showMinuteMarkers]="false"
-        hourMarkerColor="#0078d4"
-        clockNumberColor="#0078d4"
-        hourMarkerThickness="8%"
-        hourMarkerLength="4%"
-        [markerOffsetPercent]="88"
-        [numbersOffsetPercent]="70"
-        hourHandThickness="12px"
-        minuteHandThickness="8px"
-        secondHandThickness="2px"
-      />
-    </div>
-  </div>
-
-  <!-- Luxury -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Luxury</h3>
-    <div class="aspect-square grid place-items-center p-10">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#000000"
-        bezelColor="linear-gradient(45deg, #b8860b, #ffd700, #b8860b)"
-        bezelThickness="15px"
-        pivotColor="radial-gradient(circle at center, #ffd700 0%, #ffd700 40%, #b8860b 60%, rgba(184, 134, 11, 0.5) 80%, rgba(184, 134, 11, 0.2) 100%)"
-        pivotThickness="60px"
-        hourHandColor="linear-gradient(to right, #ffd700, #b8860b)"
-        minuteHandColor="linear-gradient(to right, #c0c0c0, #808080)"
-        secondHandColor="#ff0000"
-        hourMarkerColor="#ffd700"
-        minuteMarkerColor="rgba(255, 215, 0, 0.5)"
-        clockNumberColor="#ffd700"
-        [markerOffsetPercent]="110"
-        [numbersOffsetPercent]="120"
-        hourHandThickness="12px"
-        minuteHandThickness="8px"
-        secondHandThickness="2px"
-        hourMarkerLength="10%"
-        minuteMarkerLength="5%"
-      />
-    </div>
-  </div>
-
-  <!-- Asymmetric -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Asymmetric</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#2c3e50"
-        bezelColor="transparent"
-        pivotColor="#e74c3c"
-        pivotThickness="20px"
-        hourHandColor="linear-gradient(to right, #e74c3c, transparent)"
-        minuteHandColor="linear-gradient(to right, #3498db, transparent)"
-        secondHandColor="linear-gradient(to right, #2ecc71, transparent)"
-        [showMinuteMarkers]="false"
-        hourMarkerColor="#ecf0f1"
-        clockNumberColor="#ecf0f1"
-        hourHandLength="40%"
-        minuteHandLength="65%"
-        secondHandLength="85%"
-        hourHandThickness="12px"
-        minuteHandThickness="8px"
-        secondHandThickness="4px"
-        hourHandBorderRadius="8px"
-        minuteHandBorderRadius="6px"
-        secondHandBorderRadius="4px"
-      />
-    </div>
-  </div>
-
-  <!-- Rainbow Flow -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Rainbow Flow</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="#1a1a1a"
-        bezelColor="#333333"
-        bezelThickness="5px"
-        pivotColor="conic-gradient(from 0deg, red, yellow, lime, aqua, blue, magenta, red)"
-        pivotThickness="40px"
-        hourHandColor="linear-gradient(to right, #ff6b6b, transparent)"
-        minuteHandColor="linear-gradient(to right, #4ecdc4, transparent)"
-        secondHandColor="linear-gradient(to right, #9b59b6, transparent)"
-        hourMarkerColor="linear-gradient(to bottom, #ffffff, transparent)"
-        minuteMarkerColor="rgba(255,255,255,0.3)"
-        clockNumberColor="#ffffff"
-        [showMinuteMarkers]="true"
-        hourHandLength="55%"
-        minuteHandLength="75%"
-        secondHandLength="85%"
-        hourMarkerLength="8%"
-        minuteMarkerLength="4%"
-        [markerOffsetPercent]="90"
-        transitionDuration="0.8s"
-      />
-    </div>
-  </div>
-
-  <!-- Sun -->
-  <div class="border rounded-lg p-4 bg-white shadow-sm">
-    <h3 class="font-semibold text-lg mb-4">Sun</h3>
-    <div class="aspect-square">
-      <ngx-analog-clock
-        [date]="date()"
-        class="w-full h-full"
-        dialColor="linear-gradient(to top, #ff4e50, #fc6138, #f07a25)"
-        bezelColor="transparent"
-        bezelThickness="0"
-        pivotColor="radial-gradient(circle at center, #ffd700 0%, #ffd700 100%)"
-        pivotThickness="60px"
-        hourHandColor="linear-gradient(to bottom, #00FFFF 50%, transparent)"
-        minuteHandColor="linear-gradient(to bottom, #00FF00 50%, transparent)"
-        secondHandColor="linear-gradient(to bottom, #FFFFFF 50%, transparent)"
-        hourMarkerColor="linear-gradient(to top, #ffd700, transparent)"
-        minuteMarkerColor="linear-gradient(to top, #ffd700, transparent)"
-        clockNumberColor="#ffffff"
-        [showClockNumbers]="false"
-        hourHandLength="55%"
-        minuteHandLength="75%"
-        secondHandLength="85%"
-        hourMarkerLength="50%"
-        minuteMarkerLength="50%"
-        [markerOffsetPercent]="100"
-        transitionDuration="0.8s"
-      />
-    </div>
-  </div>
-</div>
+</section>
