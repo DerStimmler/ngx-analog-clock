@@ -13,14 +13,12 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {
-      "ngx-analog-clock": ["libs/ngx-analog-clock/src/index.ts"]
+      "ngx-analog-clock": ["./libs/ngx-analog-clock/src/index.ts"]
     },
     "strict": true,
     "noUncheckedSideEffectImports": true,
-    "types": ["*"],
-    "esModuleInterop": false
+    "types": ["*"]
   },
   "exclude": ["node_modules", "tmp"]
 }
