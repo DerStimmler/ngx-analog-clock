@@ -44,3 +44,11 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 .angular
+
+.nx/migrate-runs
+
+.claude/worktrees
+
+.nx/polygraph
+
+.nx/self-healing
