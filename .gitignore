@@ -46,3 +46,5 @@ Thumbs.db
 .angular
 
 .nx/migrate-runs
+
+.claude/worktrees
